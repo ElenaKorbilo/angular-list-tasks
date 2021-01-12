@@ -1,8 +1,21 @@
-<input type="text" [(ngModel)]="searchStr" [ngModelOptions]="{standalone: true}" placeholder="Search" />
-<hr>
+<div class="container" class="m-3">
 
-<ol>
-	<li *ngFor="let task of tasks | filterTitle: searchStr">
-		<app-task [task]='task'></app-task>
-	</li>
-</ol>
+	<h2 class="text-center">Tasks list</h2>
+
+	<div class="row justify-content-center mb-5">
+		<div class="col-sm-12 col-md-3">
+			<input class="form-control" type="text" [(ngModel)]="searchStr" [ngModelOptions]="{standalone: true}" placeholder="Search">
+    </div>
+		</div>
+
+
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-6">
+				<ul class="list-group list-group-flush">
+					<li *ngFor="let task of tasks | filterTitle: searchStr" class="list-group-item">
+						<app-task [task]='task'></app-task>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>

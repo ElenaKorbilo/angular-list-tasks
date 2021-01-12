@@ -9,7 +9,9 @@ import { Task } from "../interfaces";
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<Task> {
-    return this.http.get("https://jsonplaceholder.typicode.com/todos") as any;
+  getTasks(): Observable<Task[]> {
+    return this.http.get(
+      "https://jsonplaceholder.typicode.com/todos"
+    ) as Observable<Task[]>;
   }
 }

@@ -15,6 +15,15 @@ export class AppComponent {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getTasks().subscribe((data: any) => (this.tasks = data));
+    let storage = localStorage.getItem("tasks");
+
+    if (!storage) {
+      this.dataService.getTasks().subscribe(data => {
+        this.tasks = data;
+        localStorage.setItem("tasks", JSON.stringify(data));
+      });
+    } else {
+      this.tasks = JSON.parse(storage);
+    }
   }
 }
